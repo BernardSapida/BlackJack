@@ -15,3 +15,7 @@ class Player:
 
     def getBalance(self):
         return self.balance
+
+    def resetAll(self):
+        self.hand.cards = []
+        self.hand.handValue = 0

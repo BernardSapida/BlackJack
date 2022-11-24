@@ -32,27 +32,35 @@ class Hand:
             print("\n===============================\n")
     
     def getHandValue(self, isStand = False):
+        numberOfAce = 0
+
         if(self.name == "Dealer"):
             self.handValue = 0
 
             if(isStand == False):
                 for index in range(0, len(self.cards) - 1):
                     cardValue = self.cards[index].split(" ")[0]
-                    if(cardValue == "Ace"): self.handValue += 1
+                    if(cardValue == "Ace"): 
+                        self.handValue += 1
+                        numberOfAce += 1
                     elif(cardValue == "Queen" or cardValue == "King" or cardValue == "Jack"): self.handValue += 10
                     else: self.handValue += int(cardValue)
             else:
                 for index in range(0, len(self.cards)):
                     cardValue = self.cards[index].split(" ")[0]
-                    if(cardValue == "Ace"): self.handValue += 1
+                    if(cardValue == "Ace"): 
+                        self.handValue += 1
+                        numberOfAce += 1
                     elif(cardValue == "Queen" or cardValue == "King" or cardValue == "Jack"): self.handValue += 10
                     else: self.handValue += int(cardValue)
-            return self.handValue
+            return self.handValue + 10 if (numberOfAce >= 1 and (self.handValue + 10 == 21)) else self.handValue;
         else:
             self.handValue = 0
             for card in self.cards:
                 cardValue = card.split(" ")[0]
-                if(cardValue == "Ace"): self.handValue += 1
+                if(cardValue == "Ace"): 
+                    self.handValue += 1
+                    numberOfAce += 1
                 elif(cardValue == "Queen" or cardValue == "King" or cardValue == "Jack"): self.handValue += 10
                 else: self.handValue += int(cardValue)
-            return self.handValue
+            return self.handValue + 10 if (numberOfAce >= 1 and (self.handValue + 10 == 21)) else self.handValue;

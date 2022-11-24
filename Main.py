@@ -30,9 +30,6 @@ class Main:
             choice = input("Choice: ")
             print("\n===============================\n")
             if(choice != "1"): break
-                
-        
-            
 
     def createPlayer(self):
         self.player = Player(self.name)
@@ -93,7 +90,6 @@ class Main:
 
         self.isStand = True
         
-    
     def dealerTurns(self):
         if(self.player.hand.getHandValue() <= 21 and self.dealer.hand.getHandValue(self.isStand) < 17): 
             while(self.dealer.hand.getHandValue(self.isStand) < 17):

@@ -1,15 +1,25 @@
 import random
 
 class Deck:
+    # The function __init__() is a constructor that initializes the deck of cards
     def __init__(self):
-        # Start shuffling deck
+        # Reset the deck and start shuffling
         self.resetDeck();
 
+    """
+    It takes a random card from the deck and removes it from the deck
+    :return: A card object
+    """
     def drawCard(self):
+        
         drewCard = self.deck[random.randint(0, len(self.deck) - 1)]
         self.deck.remove(drewCard)
         return drewCard
 
+    """
+    It creates a list of strings, each string representing a card in a deck of cards, and then
+    shuffles the list
+    """
     def resetDeck(self):
         self.deck = [
             "Ace of Spades",
